@@ -8,6 +8,7 @@ end
 
 $makefile_created = true
 
+dummy_makefile('ruby_32-bit')
 unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p448_32bit/bin'))
   system 'wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz'
   system 'tar -xzf ruby-1.9.3-p448.tar.gz'
