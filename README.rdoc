@@ -1,0 +1,18 @@
+=Teknobingo Recipes
+
+Useful Capistrano recipes
+
+==Installation
+
+Gemfile:
+  gem 'teknobingo-recipes', :git => 'git@github.com:teknobingo/teknobingo-recipes.git', :branch => 'master'
+
+To setup the initial Capistrano deploy file, go to your Rails app folder via command line and enter:
+
+  capify .
+
+==Configuration
+
+In deploy.rb
+  require 'teknobingo_recipes'
+  include_recipes :nginx, :rbenv, :passenger
