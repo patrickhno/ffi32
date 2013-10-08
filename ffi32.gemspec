@@ -22,4 +22,6 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.extensions << 'ext/ruby_32-bit/extconf.rb'
+
+  s.add_dependency "ffi"
 end
