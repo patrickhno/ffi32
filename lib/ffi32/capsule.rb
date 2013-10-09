@@ -1,13 +1,14 @@
 require 'yaml'
-require 'base64'
 
 module FFI32
   class Capsule
     def initialize content
-      @content = Base64.encode64(YAML.dump(content))
+      @@objects ||= []
+      @@objects << content
+      @id = @@objects.last.object_id
     end
     def content
-      YAML.load(Base64.decode64(@content))
+      ObjectSpace._id2ref(@id)
     end
   end
 end
