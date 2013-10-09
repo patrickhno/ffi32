@@ -20,8 +20,8 @@ unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p44
   system 'cd ruby-1.9.3-p448; ./configure --with-opt-dir=$HOME/.rbenv/versions/ruby-1.9.3-p448_32bit --with-arch=i386 --prefix=$HOME/.rbenv/versions/ruby-1.9.3-p448_32bit'
   system 'cd ruby-1.9.3-p448; make'
   system 'cd ruby-1.9.3-p448; make install'
-  #system 'rm -rf ruby-1.9.3-p448'
-  #system 'rm ruby-1.9.3-p448.tar.gz'
+  system 'rm -rf ruby-1.9.3-p448'
+  system 'rm ruby-1.9.3-p448.tar.gz'
   unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p448_32bit/bin'))
     crash "failed to install ruby-1.9.3-p448_32bit"
   end
