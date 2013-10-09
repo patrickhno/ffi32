@@ -1,18 +1,22 @@
-=Teknobingo Recipes
+=FFI32
 
-Useful Capistrano recipes
+Prototype 
 
 ==Installation
 
 Gemfile:
-  gem 'teknobingo-recipes', :git => 'git@github.com:teknobingo/teknobingo-recipes.git', :branch => 'master'
+  gem 'ffi32'
 
-To setup the initial Capistrano deploy file, go to your Rails app folder via command line and enter:
+==Example
 
-  capify .
+Just replace everything FFI with FFI32
 
-==Configuration
-
-In deploy.rb
-  require 'teknobingo_recipes'
-  include_recipes :nginx, :rbenv, :passenger
+  module MyLibrary
+    extend FFI32::Library
+    ffi_lib "path/to/mylibrary.so"
+    attach_function :calculate_something, [:int, :float], :double
+    attach_function :error_code, [], :int # note empty array for functions taking zero arguments
+    attach_function :create_object, [:string], :pointer
+    attach_function :calculate_something_else, [:double, :pointer], :double
+    attach_function :free_object, [:pointer], :void
+  end
