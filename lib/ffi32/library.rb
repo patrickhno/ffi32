@@ -7,18 +7,14 @@ module FFI32
       @server ||= begin
         Thread.new do
           spec = Gem::Specification.find_by_name("ffi32")
-#          puts spec.inspect
-#          puts(ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
-#          system(ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
           system({
             "BUNDLE_GEMFILE" => '',
             "BUNDLE_BIN_PATH" => '',
             "GEM_PATH" => ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/lib/ruby/gems/1.9.1",
             "GEM_HOME" => ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/lib/ruby/gems/1.9.1"
-#            },"cd " + ENV['RBENV_ROOT'] + "; env; " + ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
             },"cd " + ENV['RBENV_ROOT'] + "; env; " + ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
         end
-        sleep 5
+        sleep 5 # TODO: sync somehow
         XMLRPC::Client.new("localhost", "/RPC2", 4321)
       end
     end
