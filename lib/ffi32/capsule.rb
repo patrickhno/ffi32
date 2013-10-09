@@ -1,5 +1,3 @@
-require 'yaml'
-
 module FFI32
   class Capsule
     def initialize content
