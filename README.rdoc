@@ -5,7 +5,7 @@ Prototype
 ==Installation
 
 Gemfile:
-  gem 'ffi32'
+  gem 'ffi32', :git => 'https://github.com/patrickhno/ffi32.git'
 
 ==Example
 

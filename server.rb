@@ -1,16 +1,4 @@
 
-# $LOAD_PATH.clear
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/site_ruby/1.9.1"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/site_ruby/1.9.1/i386-linux"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/site_ruby"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/vendor_ruby/1.9.1"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/vendor_ruby/1.9.1/i386-linux"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/vendor_ruby"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/1.9.1"
-# $LOAD_PATH << "/home/patrick/.rbenv/versions/ruby-1.9.3-p448_32bit/lib/ruby/1.9.1/i386-linux"
-
-puts Gem.path.inspect
-
 require 'rubygems'
 require 'ffi'
 require 'yaml'
