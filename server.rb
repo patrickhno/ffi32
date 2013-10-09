@@ -42,23 +42,28 @@ res.class.name.inspect
 end
 
 s.add_handler("ffi32.struct_method_missing") do |class_name,method,_args|
-  args = YAML.load(_args).map{ |arg| arg.kind_of?(FFI32::Capsule) ? arg.content : arg }
+puts "ffi32.struct_method_missing: #{class_name}.#{method} #{_args.inspect}"
+  args = YAML.load(_args).map do |arg|
+    if arg.kind_of?(FFI32::Capsule)
+      arg.content
+    elsif arg.kind_of?(Syck::DomainType)
+      Object.const_get('Library').const_get(arg.value.split('::').last)
+    else
+      arg
+    end
+  end
 puts "METHOD MISSING FOR CLASS #{class_name}: #{method}: #{args.inspect}"
   mod,klass = class_name.split('::')
 mod = 'Library'
   a_new_class = begin
     Object.const_get(mod).const_get(klass)
-puts "\#\# a_new_class = Object.const_get('#{mod}').const_get('#{klass}')"
   rescue NameError
     a_new_class = Class.new(FFI::Struct)
     Object.const_get(mod).const_set(klass, a_new_class)
-puts "\#\# a_new_class = Class.new(FFI::Struct)"
-puts "\#\# Object.const_get('#{mod}').const_set('#{klass}', a_new_class)"
     a_new_class
   end
 puts "GOT THE CLASS #{a_new_class.inspect}, CALLING METHOD #{method} with arguments #{args.inspect}"
   begin
-puts "\#\# a_new_class.#{method} #{args.inspect}"
     res = a_new_class.send(method,*args)
   rescue => e
     puts "EXCEPTION:"
