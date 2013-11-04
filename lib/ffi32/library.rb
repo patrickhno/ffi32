@@ -12,7 +12,8 @@ module FFI32
             "BUNDLE_BIN_PATH" => '',
             "GEM_PATH" => ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/lib/ruby/gems/1.9.1",
             "GEM_HOME" => ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/lib/ruby/gems/1.9.1"
-            },"cd " + ENV['RBENV_ROOT'] + "; env; " + ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
+#            },"cd " + ENV['RBENV_ROOT'] + "; env; " + ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby #{spec.gem_dir}/server.rb")
+            },"cd " + ENV['RBENV_ROOT'] + "; " + ENV['RBENV_ROOT'] + "/versions/ruby-1.9.3-p448_32bit/bin/ruby -e 'require \'ffi32/server.rb\'; FFI32::Server.run'")
         end
         sleep 5 # TODO: sync somehow
         XMLRPC::Client.new("localhost", "/RPC2", 4321)
@@ -20,8 +21,6 @@ module FFI32
     end
     def method_missing(method, *args, &block)
       ret = FFI32::Library.server.call("ffi32.method_missing", method, YAML.dump(args))
-puts "RETURNED:::"
-puts ret.inspect
       YAML.load(ret)
     end
   end

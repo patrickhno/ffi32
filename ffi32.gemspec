@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Patrick Hanevold"]
   s.email       = ["patrick.hanevold@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{Handle 32-bit shared libraries in 64-bit ruby with FFI}
-  s.description = %q{Yes its true, really handle 32-bit shared libraries in 64-bit ruby with FFI}
+  s.summary     = %q{Handle 32-bit shared libraries in 64-bit ruby through FFI}
+  s.description = %q{Yes its true, really handle 32-bit shared libraries in 64-bit ruby through FFI}
   s.required_rubygems_version = ">= 1.3.7"
 
   s.files         = `git ls-files`.split("\n")
