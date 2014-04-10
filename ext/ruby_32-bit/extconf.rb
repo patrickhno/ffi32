@@ -1,6 +1,6 @@
 require 'mkmf'
 
-['make','autoconf','wget','tar','rbenv'].each do |exe|
+['make','wget','tar','rbenv'].each do |exe|
   unless find_executable(exe)
     crash "#{exe} needed"
   end
