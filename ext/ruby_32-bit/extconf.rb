@@ -11,6 +11,7 @@ $makefile_created = true
 dummy_makefile('ruby_32-bit')
 unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p448_32bit/bin'))
   if find_executable('apt-get')
+    # TODO: Im not comfortable with doing this here. Maybe have a rake task, or even a user mode linux bottle for the 32 bit ruby.
     system 'sudo apt-get -y update'
     %q{build-essential autoconf gcc gcc:i386 c-compiler:i386 zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev curl git-core python-software-properties libc6-dev-i386 ia32-libs libssl-dev:i386}.split.each do |package|
       puts "sudo apt-get -y install #{package}"
