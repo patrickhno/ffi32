@@ -12,7 +12,7 @@ dummy_makefile('ruby_32-bit')
 unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p448_32bit/bin'))
   if find_executable('apt-get')
     system 'sudo apt-get -y update'
-    %q{build-essential autoconf gcc zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev curl git-core python-software-properties libc6-dev-i386 ia32-libs libssl-dev:i386}.each do |package|
+    %q{build-essential autoconf gcc zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev curl git-core python-software-properties libc6-dev-i386 ia32-libs libssl-dev:i386}.split.each do |package|
       system "sudo apt-get -y install #{package}"
     end
   end
