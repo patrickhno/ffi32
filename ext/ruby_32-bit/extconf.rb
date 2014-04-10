@@ -29,5 +29,11 @@ unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p44
   unless find_executable('ruby',File.join(Dir.home,'.rbenv/versions/ruby-1.9.3-p448_32bit/bin'))
     crash "failed to install ruby-1.9.3-p448_32bit"
   end
-  system '~/.rbenv/versions/ruby-1.9.3-p448_32bit/bin/gem install ffi'
+  system 'cd ~/.rbenv/plugins; git clone git://github.com/jamis/rbenv-gemset.git'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; rbenv gemset create 1.9.3-p448 ffi32'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; >.rbenv-gemsets <<<ffi32'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; rbenv gemset active'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; gem install ffi'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; rbenv rehash'
+  system 'cd ~/.rbenv/versions/ruby-1.9.3-p448_32bit; rbenv gemset list'
 end
